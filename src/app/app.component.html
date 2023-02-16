@@ -1,15 +1,10 @@
-<h1>Pages</h1>
-
-<!-- <img *ngFor="" src="images[0].url" alt="">
-
-{{images[0]}}  -->
-
-
-<nav>
-  <ul>
-    <li *ngFor="let image of images">
-      <a href=""></a>
-      <img src={{image.url}} alt="">
+<nav class="wrapper">
+  <ul class="ul-component">
+    <li class="li-component" *ngFor="let image of images; let i = index;">
+      <a class="a-component" href="">
+        {{i+1}}
+      </a>
+      <img alt="">
     </li>
   </ul>
 </nav>
