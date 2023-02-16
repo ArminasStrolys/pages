@@ -25,3 +25,8 @@
   padding: 15px;
   background-color: rgb(206, 206, 206);
 }
+
+.active {
+  background-color: black;
+  color: white;
+}

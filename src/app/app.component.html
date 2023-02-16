@@ -1,6 +1,6 @@
 <nav class="wrapper">
   <ul class="ul-component">
-    <li class="li-component" *ngFor="let image of images; let i = index;">
+    <li class="li-component" [ngClass]="{active: i === currentPage}" *ngFor="let image of images; let i = index;">
       <a class="a-component" href="">
         {{i+1}}
       </a>
