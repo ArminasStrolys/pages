@@ -1,10 +1,21 @@
 <nav class="wrapper">
   <ul class="ul-component">
-    <li class="li-component" [ngClass]="{active: i === currentPage}" *ngFor="let image of images; let i = index;">
-      <a class="a-component" href="">
-        {{i+1}}
-      </a>
-      <img alt="">
+    <li class="li-component" [ngClass]="{disabled: currentPage === 0}">
+      <a (click)="currentPage = currentPage - 1" class="a-component">Prev</a>
+    </li>
+    <ng-container *ngFor="let image of images; let i = index;">
+      <li class="li-component" [ngClass]="{active: i === currentPage}" *ngIf="checkWindowIndex(i)">
+        <a (click)="currentPage = i" class="a-component">
+          {{i+1}}
+        </a>
+      </li>
+    </ng-container>
+    <li class="li-component" [ngClass]="{disabled: currentPage === images.length -1}">
+      <a (click)="currentPage = currentPage + 1" class="a-component">Next</a>
     </li>
   </ul>
 </nav>
+
+<div>
+  <img [src]="images[currentPage].url">
+</div>
