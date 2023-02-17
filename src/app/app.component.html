@@ -1,16 +1,17 @@
 <nav class="wrapper">
   <ul class="ul-component">
-    <li class="li-component" [ngClass]="{disabled: currentPage === 0}">
+    <li class="li-component" [appClass]="{disabled: currentPage === 0}">
       <a (click)="currentPage = currentPage - 1" class="a-component">Prev</a>
     </li>
-    <ng-container *ngFor="let image of images; let i = index;">
-      <li class="li-component" [ngClass]="{active: i === currentPage}" *ngIf="checkWindowIndex(i)">
+    <ng-container *appTimes="images.length; let i = index">
+      <!-- <ng-container *ngFor="let image of images; let i = index;"> -->
+      <li class="li-component" [appClass]="{active: i === currentPage}" *ngIf="checkWindowIndex(i)">
         <a (click)="currentPage = i" class="a-component">
           {{i+1}}
         </a>
       </li>
     </ng-container>
-    <li class="li-component" [ngClass]="{disabled: currentPage === images.length -1}">
+    <li class="li-component" [appClass]="{disabled: currentPage === images.length -1}">
       <a (click)="currentPage = currentPage + 1" class="a-component">Next</a>
     </li>
   </ul>
@@ -19,3 +20,23 @@
 <div>
   <img [src]="images[currentPage].url">
 </div>
+<!-- <h1 appClass [backgroundColor]="'red'">TEST</h1> -->
+<!-- <h1 [appClass]="'red'">TEST</h1> -->
+<h1>TEST</h1>
+<div [ngSwitch]="currentPage">
+  <div *ngSwitchCase="0">
+    <h2>
+      page ZERO
+    </h2>
+  </div>
+  <div *ngSwitchCase="1">
+    page ONE
+  </div>
+  <div *ngSwitchDefault>
+    page DEFAULT
+  </div>
+</div>
+
+<ul *appTimes="5">
+  <li>TESTING</li>
+</ul>
